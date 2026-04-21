@@ -1,0 +1,53 @@
+/* Importar fuente Inter desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base global ─────────────────────────────────────────── */
+@layer base {
+  html, body, #root {
+    @apply h-full w-full m-0 p-0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* elimina efecto azul al tocar en tablet */
+    touch-action: manipulation;               /* evita doble-tap zoom en tablets */
+  }
+
+  body {
+    @apply bg-white text-gray-900 select-none overflow-hidden;
+  }
+
+  /* Evitar selección de texto en elementos de evaluación */
+  img {
+    @apply select-none pointer-events-none;
+    -webkit-user-drag: none;
+  }
+}
+
+/* ── Utilidades específicas de PEPPAC ────────────────────── */
+@layer utilities {
+  /* Imagen táctil del Juego 1 */
+  .imagen-item {
+    @apply rounded-3xl cursor-pointer transition-transform duration-150 active:scale-95;
+    pointer-events: all;
+  }
+
+  /* Zona táctil del Juego 2 (canasta o basurero) */
+  .zona-tacto {
+    @apply flex flex-col items-center justify-center cursor-pointer
+           transition-all duration-150 active:scale-95 select-none;
+  }
+
+  /* Barra inferior del evaluador */
+  .barra-evaluador {
+    @apply fixed bottom-0 left-0 right-0 h-[60px]
+           bg-gray-100 border-t border-gray-200
+           flex items-center px-4 gap-4 z-50;
+  }
+
+  /* Animación de transición entre ítems (Juego 1) */
+  .fade-transition {
+    animation: fadeIn 0.25s ease-in-out;
+  }
+}
