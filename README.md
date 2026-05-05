@@ -2,8 +2,6 @@
 
 Aplicación web para la administración digital del instrumento de evaluación fonoaudiológica **PEPPAC**, destinada a niños hispanohablantes de **3 a 5 años**.
 
-> Proyecto **FONDECYT 11241390** — Universidad Santo Tomás
-
 ---
 
 ## Descripción
