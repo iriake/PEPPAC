@@ -1,75 +1,126 @@
-# PEPPAC — Aplicación Web de Evaluación Fonoaudiológica
+# PEPPAC — Prototipo de Evaluación Fonoaudiológica Digital
 
-Aplicación web para la administración digital del instrumento de evaluación fonoaudiológica **PEPPAC**, destinada a niños hispanohablantes de **3 a 5 años**.
+Prototipo de aplicación web para la digitalización del instrumento de evaluación fonoaudiológica **PEPPAC**, orientado a niños hispanohablantes de **3 a 5 años**.
 
----
-
-## Descripción
-
-PEPPAC es una interfaz de evaluación completamente autónoma para el niño, donde el evaluador (fonoaudiólogo) prepara la sesión y el niño interactúa directamente con la pantalla. Las respuestas se registran automáticamente en la base de datos y el acceso a los resultados está protegido por PIN.
+> ⚠️ **Este repositorio es un prototipo funcional** en desarrollo activo. Su propósito es explorar y validar la viabilidad técnica de una interfaz de evaluación autónoma, operada directamente por el niño, sin intervención del evaluador durante la sesión.
 
 ---
 
-## Stack Tecnológico
+## Motivación
 
-| Tecnología | Uso |
-|---|---|
-| **Vite + React** | Framework de la aplicación |
-| **Tailwind CSS** | Estilos |
-| **Supabase** | Base de datos, autenticación, RLS, Edge Functions |
-| **Web Speech API** | Síntesis de voz TTS en español (`es-CL`) |
+Los instrumentos de evaluación fonoaudiológica infantil son típicamente administrados de forma presencial y manual, lo que introduce variabilidad en la aplicación y limita la escalabilidad. Este prototipo explora cómo una interfaz digital puede:
+
+- **Estandarizar** la administración del instrumento.
+- **Reducir la carga** sobre el evaluador durante la sesión.
+- **Registrar datos** de forma automática y estructurada.
+- **Garantizar privacidad** mediante control de acceso por rol.
+
+---
+
+## Estado del Proyecto
+
+> 🔬 **Prototipo en etapa temprana.** Las interfaces implementadas son funcionales pero no representan el diseño final del producto. El foco actual está en la arquitectura de datos, el flujo de evaluación y la experiencia de uso desde la perspectiva del niño.
+
+### Progreso actual
+
+- [x] Configuración del proyecto (Vite + React + Tailwind)
+- [x] Definición de la estructura de datos de los ítems
+- [x] Implementación del flujo de Juego 1
+- [x] Implementación del flujo de Juego 2
+- [ ] Autenticación del evaluador (Supabase Auth)
+- [ ] Registro de participantes
+- [ ] Persistencia de respuestas en base de datos
+- [ ] Panel de resultados protegido por PIN
+- [ ] Historial de sesiones
 
 ---
 
 ## Estructura de la Evaluación
 
-### Juego 1 — Comprensión de imágenes
-- El niño ve **dos imágenes** lado a lado y toca una.
+El instrumento se divide en dos juegos, cada uno evaluando distintas dimensiones de comprensión lingüística.
+
+### Juego 1 — Selección de imagen
+- El niño ve **dos imágenes** y toca una.
 - Sin feedback visual ni sonoro tras la respuesta.
 - Avance automático con transición fade de 250ms.
-- **5 ítems + 1 ejemplo de práctica.**
+- **5 ítems evaluados + 1 ítem de práctica.**
 
-### Juego 2 — Comprensión de productos
-- El niño ve una imagen de producto y decide si lo **compra** 🛒 o **descarta** 🗑️.
-- Zona izquierda verde (comprar) / zona derecha roja (descartar).
-- Animación CSS de 1.2s antes de avanzar al siguiente ítem.
-- **9 ítems + ejemplos + ítems de reemplazo.**
-- Condiciones evaluadas: `Adj(+)`, `Adj(+)neg`, `Adj(-)`, `Adj(-)neg`
+### Juego 2 — Clasificación de productos
+- El niño decide si un producto se **compra** 🛒 o se **descarta** 🗑️.
+- Zona táctil izquierda (verde) para comprar / derecha (roja) para descartar.
+- Animación de respuesta de 1.2s antes de avanzar.
+- **9 ítems evaluados + ejemplos + ítems de reemplazo.**
+- Condiciones lingüísticas: `Adj(+)`, `Adj(+)neg`, `Adj(-)`, `Adj(-)neg`
 
 ---
 
 ## Flujo de la Aplicación
 
 ```
-Login
-  └─▶ Registro de Participante
-        └─▶ Instrucciones Juego 1  (para el evaluador)
-              └─▶ Juego 1
-                    └─▶ Gestión de Reemplazos  (para el evaluador)
-                          └─▶ Instrucciones Juego 2  (para el evaluador)
-                                └─▶ Juego 2
-                                      └─▶ Pantalla "¡Gracias!"
+Login del evaluador
+  └─▶ Registro del participante
+        └─▶ Instrucciones Juego 1  [evaluador]
+              └─▶ Juego 1          [niño]
+                    └─▶ Gestión de reemplazos  [evaluador]
+                          └─▶ Instrucciones Juego 2  [evaluador]
+                                └─▶ Juego 2          [niño]
+                                      └─▶ Pantalla de cierre
                                             └─▶ [PIN] → Resultados / Historial
 ```
 
 ---
 
-## Base de Datos (Supabase)
+## Arquitectura Técnica
 
-### Tablas
+### Stack
+
+| Capa | Tecnología |
+|---|---|
+| Frontend | Vite + React |
+| Estilos | Tailwind CSS |
+| Backend / DB | Supabase (PostgreSQL + Auth + RLS) |
+| Síntesis de voz | Web Speech API (`es-CL`) |
+
+### Modelo de datos (simplificado)
 
 | Tabla | Descripción |
 |---|---|
-| `usuarios` | Extiende `auth.users`. Almacena el `pin_hash` del fonoaudiólogo. |
-| `participantes` | Datos del niño (nombre, fecha de nacimiento, establecimiento, sexo, condición). |
-| `sesiones` | Una sesión por evaluación. Almacena puntajes, reemplazos usados y observaciones. |
-| `respuestas` | Una fila por ítem respondido, con enunciado, respuesta del niño y si es correcto. |
+| `usuarios` | Perfil del evaluador, vinculado a `auth.users` |
+| `participantes` | Datos del niño evaluado |
+| `sesiones` | Una sesión por evaluación, con puntajes y metadatos |
+| `respuestas` | Registro ítem a ítem de cada respuesta |
 
-### Seguridad (RLS)
-Row Level Security habilitado en todas las tablas. Cada fonoaudiólogo solo puede ver y modificar sus propios datos.
+### Privacidad y acceso
+Todas las tablas tienen **Row Level Security (RLS)** habilitado. Cada evaluador solo puede acceder a los datos de sus propios participantes y sesiones. La verificación del PIN se realiza en el servidor mediante una función RPC, sin exponer hashes al cliente.
 
-### Verificación de PIN
-La verificación se realiza mediante una **Supabase RPC Function** en el servidor, sin exponer el hash al cliente.
+### Síntesis de voz
+
+Los enunciados se presentan mediante la [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis):
+
+```js
+const utterance = new SpeechSynthesisUtterance(texto);
+utterance.lang = 'es-CL';
+utterance.rate = 0.9;
+speechSynthesis.speak(utterance);
+```
+
+> La calidad depende del navegador y sistema operativo. Chrome y Edge ofrecen las mejores voces en español.
+
+---
+
+## Instalación y desarrollo local
+
+```bash
+# Instalar dependencias
+npm install
+
+# Configurar variables de entorno
+cp .env.example .env
+# Completar VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY
+
+# Iniciar servidor de desarrollo
+npm run dev
+```
 
 ---
 
@@ -77,68 +128,8 @@ La verificación se realiza mediante una **Supabase RPC Function** en el servido
 
 | Juego | Rango |
 |---|---|
-| Juego 1 | 0 – 5 puntos |
-| Juego 2 | 0 – 36 puntos |
-| **Total** | **0 – 41 puntos** |
+| Juego 1 | 0 – 5 pts |
+| Juego 2 | 0 – 36 pts |
+| **Total** | **0 – 41 pts** |
 
-Los resultados incluyen desglose por condición lingüística (`Adj(+)`, `Adj(+)neg`, `Adj(-)`, `Adj(-)neg`).
-
----
-
-## Configuración del Entorno
-
-1. Clonar el repositorio y instalar dependencias:
-   ```bash
-   npm install
-   ```
-
-2. Crear un archivo `.env` en la raíz del proyecto basándose en `.env.example`:
-   ```env
-   VITE_SUPABASE_URL=https://tu-proyecto.supabase.co
-   VITE_SUPABASE_ANON_KEY=tu-anon-key
-   ```
-
-3. Ejecutar en modo desarrollo:
-   ```bash
-   npm run dev
-   ```
-
-4. Construir para producción:
-   ```bash
-   npm run build
-   ```
-
----
-
-## Estado de Implementación
-
-- [x] Configuración Vite + React + Tailwind
-- [x] Datos de ítems — `itemsJuego1.js` e `itemsJuego2.js`
-- [x] `EvaluacionJuego1.jsx` funcional
-- [x] `EvaluacionJuego2.jsx` funcional
-- [ ] Login con Supabase Auth
-- [ ] Registro de participante
-- [ ] Guardado de respuestas en Supabase
-- [ ] Pantalla de resultados (protegida por PIN)
-- [ ] Historial de sesiones
-
----
-
-## Síntesis de Voz
-
-Los enunciados se reproducen con la [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis):
-
-```js
-const utterance = new SpeechSynthesisUtterance(texto);
-utterance.lang = 'es-CL'; // fallback: 'es-ES'
-utterance.rate = 0.9;
-speechSynthesis.speak(utterance);
-```
-
-> **Nota:** La calidad de voz depende del sistema operativo y navegador. En macOS y con Chrome/Edge la calidad en español es alta. En Windows puede variar según la versión del sistema.
-
----
-
-## Licencia
-
-Proyecto de investigación académica — FONDECYT 11241390. Uso restringido.
+Los resultados incluyen desglose por condición lingüística y registro de los ítems de reemplazo utilizados.
