@@ -51,8 +51,6 @@ El instrumento manipula la polaridad del enunciado del cliente para evaluar cóm
 
 ---
 
----
-
 ## Arquitectura Técnica
 
 ### Stack
@@ -97,30 +95,6 @@ Login del evaluador
 
 Barrera, V., Guerra, P., Osorio, C. & Quintero, B. (2024). Construcción y validación de un instrumento para evaluar el procesamiento pragmático de los adjetivos calificativos en escolares hispanohablantes. Tesis de licenciatura en Fonoaudiología. No publicada.
 
-Booth, A. E., & Waxman, S. R. (2009). A horse of a different color: specifying with precision infants' mappings of novel nouns and adjectives. *Child development, 80*(1), 15–22. https://doi.org/10.1111/j.1467-8624.2008.01242.x
-
-Davies, C., Lingwood, J., Ivanova, B., & Arunachalam, S. (2021). Comprehension of contrastive and descriptive adjectives by three-year-olds. *Cognition*. https://doi.org/10.1016/j.cognition.2021.104707
-
-Davies, C., Ebbels, S., Nicoll, H., Syrett, K., White, S. & Zuniga-Montanez, C. (2023). Supporting adjective learning by children with Developmental Language Disorder. *International Journal of Language & Communication Disorders, 58*(2), 629–650.
-
-Graham, S. A., Cameron, C. L., & Welder, A. N. (2005). Preschoolers' extension of familiar adjectives. *Journal of experimental child psychology, 91*(3), 205–226. https://doi.org/10.1016/j.jecp.2005.03.001
-
-Morales Reyes, A. (2021). Uso de adjetivos en niños hispanohablantes. *Estudios de Lingüística Aplicada, 0*(72), 69–95. https://doi.org/10.22201/enallt.01852647p.2021.72.908
-
-Owens, R. E. (2016). *Language Development: An Introduction* (9ª ed.). Pearson.
-
-Redolfi, M. & Melloni, C. (2024). Processing adjectives in development: Evidence from eye-tracking. *Journal of Child Language*, 1–24. https://doi.org/10.1017/S0305000923000703
-
-Sandhofer, C. M., & Smith, L. B. (2001). Why children learn color and size words so differently. *Journal of Experimental Psychology: General, 130*(4), 600–620.
-
 Schulze, C., Grassmann, S. & Tomasello, M. (2013). 3-Year-Old Children Make Relevance Inferences in Indirect Verbal Communication. *Child Development*. https://doi.org/10.1111/cdev.12093
 
 Tribushinina, E. (2012). Comprehension of relevance implicatures by pre-schoolers: The case of adjectives. *Journal of Pragmatics, 44*(14), 2035–2044. https://doi.org/10.1016/j.pragma.2012.09.018
-
-Tribushinina, E. (2018). Acquisition of adjectives across languages and populations. *Cahiers Du Centre de Linguistique et Des Sciences Du Langage, 56*, 259–275.
-
-Tribushinina, E., Voeikova, M. & Noccetti, S. (2015). *Semantics and Morphology of Early Adjectives in First Language Acquisition*. Cambridge Scholars Publishing.
-
-Waxman, S. R., & Booth, A. E. (2001). On the insufficiency of evidence for a domain-general account of word learning. *Cognition, 78*(3), 277–279.
-
-Weicker, M. & Schulz, P. (2024). Children and adults privilege linguistic over visual information when creating comparison classes for prenominal gradable adjectives. *Glossa: a Journal of General Linguistics, 9*(1), 1–36.
