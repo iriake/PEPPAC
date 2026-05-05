@@ -1,26 +1,8 @@
 # PEPPAC — Prototipo de Evaluación Fonoaudiológica Digital
 
-Prototipo de aplicación web para la digitalización del instrumento de evaluación fonoaudiológica **PEPPAC** (_Procesamiento Pragmático del Adjetivo Calificativo_), orientado a niños hispanohablantes de **3 a 5 años**.
+Aplicación web para la digitalización del instrumento de evaluación fonoaudiológica **PEPPAC** (_Procesamiento Pragmático del Adjetivo Calificativo_), orientado a niños hispanohablantes de **3 a 5 años**.
 
-> ⚠️ **Este repositorio es un prototipo funcional** en desarrollo activo. Su propósito es explorar y validar la viabilidad técnica de una interfaz de evaluación autónoma, operada directamente por el niño, sin intervención del evaluador durante la sesión.
-
----
-
-## Fundamento Teórico
-
-### Adquisición de adjetivos calificativos
-
-La adquisición y dominio de los adjetivos constituye un componente esencial del desarrollo lingüístico infantil, dado que estas palabras permiten describir propiedades de personas, objetos y eventos (Davies et al., 2023, 2022; Tribushinina, 2018). Su incorporación en el sistema lingüístico de los niños favorece tanto la comprensión como la producción verbal, siendo clave en la construcción de significados complejos (Davies et al., 2019).
-
-No obstante, su adquisición representa un desafío particular: los adjetivos calificativos tienden a ser menos frecuentes en el _input_ lingüístico infantil (Tribushinina et al., 2015), suelen poseer significados abstractos (Sandhofer & Smith, 2001, 2007; Waxman & Booth, 2001), dependen semánticamente del sustantivo que modifican (Graham et al., 2005), y su aprendizaje requiere habilidades cognitivas avanzadas como el control atencional y la teoría de la mente (Boot & Waxman, 2009; Tribushinina et al., 2013; Redolfi & Melloni, 2024).
-
-### Adjetivos subsectivos y procesamiento pragmático
-
-El instrumento se centra en los **adjetivos subsectivos**: aquellos cuyo significado no es absoluto sino que se construye en función del sustantivo que modifican. Por ejemplo, _'podrida'_ o _'fresca'_ no poseen un valor semántico fijo; su interpretación depende del contexto y de las expectativas asociadas al referente específico. Debido a esto, son considerados más complejos cognitiva y lingüísticamente (Weicker & Schulz, 2019), pues su procesamiento requiere mayor integración contextual e inferencial en comparación con los adjetivos intersectivos.
-
-El estudio de Tribushinina (2012) demostró que niños monolingües holandeses de tres años realizaban inferencias de relevancia a partir de adjetivos evaluativos en contextos argumentativos de forma similar a los adultos, y que la **polaridad** del adjetivo —tanto semántica como sintáctica— incidía significativamente en cómo los niños interpretaban la intención del hablante. Estos hallazgos indican que este tipo de procesamiento exige la integración de información semántica, sintáctica y pragmática para inferir actitudes, estados mentales y valoraciones.
-
-A pesar de su relevancia, la investigación sobre adquisición de adjetivos calificativos en español es aún incipiente. La mayoría de los estudios disponibles se centran en otras lenguas, lo que motiva el desarrollo de instrumentos adaptados al español (Barrera et al., 2024).
+🌐 **Demo:** [peppac.vercel.app](https://peppac.vercel.app)
 
 ---
 
@@ -48,17 +30,6 @@ El niño asume el rol de **vendedor** en un supermercado. El evaluador actúa co
 
 Los estímulos fueron diseñados para evaluar la interpretación referencial del adjetivo subsectivo en función del contexto visual, priorizando la concreción, la familiaridad y la posibilidad de generar contrastes perceptibles y relevantes para la edad.
 
-### Ítems del Juego 1
-
-| Ítem | Objetos | Adjetivo evaluado |
-|---|---|---|
-| Ejemplo | Sandía / Frutilla | Grande |
-| 01 | Conejo / Tortuga | Lento |
-| 02 | Flor nueva / Flor marchita | Nueva |
-| 03 | Ensalada / Papas fritas | Caliente |
-| 04 | Zapallo / Zanahoria | Liviano |
-| 05 | Bombilla larga / Bombilla corta | Larga |
-
 ---
 
 ## Juego 2 — Lectura de Intenciones
@@ -78,39 +49,7 @@ El instrumento manipula la polaridad del enunciado del cliente para evaluar cóm
 | Adjetivo negativo `Adj(-)` | _"Eso es feo"_ | No compra 🗑️ |
 | Adjetivo negativo negado `Adj(-)neg` | _"Eso no es feo"_ | Compra 🛒 |
 
-### Ítems del Juego 2
-
-| Ítem | Tipo de adjetivo | `Adj(+)` | `Adj(+)neg` | `Adj(-)` | `Adj(-)neg` |
-|---|---|---|---|---|---|
-| Ej. | Valoración estética (juguete) | Bonita — Muñeca | No bonito — Volantín | Feo — Avión | No feo — Robot |
-| 1 | Valoración de calidad (alimento) | Bueno — Plátano | No bueno — Bebida Cola | Malo — Dulces | No mala — Leche |
-| 2 | Valoración emocional (juguete) | Divertido — Rompecabezas | No divertido — Patines | Aburrido — Pelota | No aburrido — Bloques |
-| 3 | Valoración física (alimento) | Fresco — Lechuga | No fresco — Frutilla | Podrido — Manzana | No podrido — Tomate |
-| 4 | Valoración de accesibilidad (juguete) | Fácil — Juego de encaje | No fácil — Patineta | Difícil — Cubo Rubik | No difícil — Lápices |
-| 5 | Valoración sensorial / textura (ropa) | Suave — Pijama | No suave — Polerón | Áspero — Gorro | No áspera — Bufanda |
-| 6 | Valoración estética (juguete) | Hermoso — Oso de peluche | No hermoso — Bicicleta | Horrible — Dinosaurio | No horrible — Araña |
-| 7 | Valoración de riesgo (objeto) | Seguro — Casco | No seguro — Tijera | Peligroso — Triciclo | No peligroso — Cuchillo |
-| 8 | Valoración física / tamaño (alimento) | Grande — Sandía | No grande — Piña | Pequeño — Naranja | No pequeño — Melón |
-| 9 | Valoración sensorial / gusto (alimento) | Sabroso — Chocolate | No sabrosas — Huevo | Asqueroso — Salchichas | No asqueroso — Yogurt |
-| Ex. | Valoración sensorial / gusto (alimento) | Rica — Torta | No rico — Papas fritas | Malo — Brócoli | No malo — Pera |
-
-> Los ítems marcados como **Ex.** son ítems de reemplazo, utilizados cuando el niño desconoce algún producto del ítem original.
-
 ---
-
-## Estado del Prototipo
-
-> 🔬 Las interfaces implementadas son funcionales pero **no representan el diseño final**. El foco actual está en la arquitectura de datos, el flujo de evaluación y la experiencia desde la perspectiva del niño.
-
-- [x] Configuración del proyecto (Vite + React + Tailwind)
-- [x] Datos de ítems — `itemsJuego1.js` e `itemsJuego2.js`
-- [x] Flujo de `EvaluacionJuego1.jsx` funcional
-- [x] Flujo de `EvaluacionJuego2.jsx` funcional
-- [ ] Autenticación del evaluador (Supabase Auth)
-- [ ] Registro de participantes
-- [ ] Persistencia de respuestas en base de datos
-- [ ] Panel de resultados protegido por PIN
-- [ ] Historial de sesiones por evaluador
 
 ---
 
@@ -151,20 +90,6 @@ Login del evaluador
 ```
 
 ---
-
-## Instalación y desarrollo local
-
-```bash
-# Instalar dependencias
-npm install
-
-# Configurar variables de entorno
-cp .env.example .env
-# Completar VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY
-
-# Iniciar servidor de desarrollo
-npm run dev
-```
 
 ---
 
